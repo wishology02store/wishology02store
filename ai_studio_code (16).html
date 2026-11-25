@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WISHOLOGY — Personalized Digital Wishes &amp; Greeting Catalog | www.wishology02.com</title>
+  <meta name="description" content="WISHOLOGY crafts personalized digital greeting cards, custom celebration pages, and instant QR keepsakes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink-bg: #FFF0F7;
+      --purple-bg: #F3EBFF;
+      --surface: #FFFFFF;
+      --heading: #2E1047;
+      --body: #5B4163;
+      --muted: #6B4E71;
+      --accent: #DB2777;
+      --purple: #7C3AED;
+      --border: #FBCFE8;
+      --green: #16A34A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--heading);
+      background:
+        radial-gradient(circle at 10% 8%, var(--pink-bg) 0%, transparent 45%),
+        radial-gradient(circle at 90% 15%, var(--purple-bg) 0%, transparent 48%),
+        linear-gradient(175deg, var(--pink-bg) 0%, var(--surface) 44%, var(--purple-bg) 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    h1, h2, h3, .font-display { font-family: 'Playfair Display', Georgia, serif; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 18px; }
+
+    /* Announcement */
+    .announcement {
+      background: linear-gradient(90deg, #2E1047, #9333EA, #DB2777);
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-bar {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #EC4899, #9333EA);
+      color: #fff;
+      font-size: 17px;
+      box-shadow: 0 6px 16px rgba(147, 51, 234, 0.22);
+    }
+    nav { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 500; color: var(--body); }
+    nav a:hover { color: var(--accent); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #EC4899, #9333EA);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      box-shadow: 0 8px 20px rgba(147, 51, 234, 0.22);
+    }
+    .btn-primary:hover { opacity: 0.94; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--heading);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 13px;
+    }
+    .btn-outline:hover { background: #FFF5FA; }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      border-radius: 10px;
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 13px;
+    }
+    .btn-whatsapp:hover { background: #15803D; }
+
+    /* Top Brand & Share Strip */
+    .top-strip {
+      margin-top: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,240,247,0.9), rgba(243,235,255,0.92));
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .top-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .top-kicker { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+    .top-title { font-size: 24px; line-height: 1.2; }
+    .top-title span { color: var(--accent); }
+    .share-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 9px 12px;
+    }
+    .share-url {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      color: var(--body);
+      word-break: break-all;
+    }
+    .share-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* Catalog Controls & Banner */
+    .catalog-section { padding: 26px 0 36px; }
+    .catalog-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .catalog-header h2 { font-size: 28px; }
+    .catalog-header p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; }
+    .filters input, .filters select {
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: #fff;
+      color: var(--heading);
+      padding: 9px 13px;
+      font-size: 13px;
+      outline: none;
+    }
+    .filters input:focus, .filters select:focus { border-color: var(--purple); }
+    .guarantee-bar {
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      color: #065F46;
+      border-radius: 14px;
+      padding: 11px 15px;
+      font-size: 12.5px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* 2 Products Per Row Catalogue Grid */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 640px) {
+      .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(147, 51, 234, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(219, 39, 119, 0.12);
+    }
+    .card-top { display: flex; flex-direction: column; gap: 14px; }
+    @media (min-width: 960px) {
+      .card-top { flex-direction: row; align-items: stretch; }
+    }
+    .card-visual {
+      width: 100%;
+      min-height: 132px;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--heading);
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+    @media (min-width: 960px) {
+      .card-visual { width: 175px; flex-shrink: 0; }
+    }
+    .card-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 4px 9px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+    .card-meta { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .card h3 { font-size: 22px; margin: 4px 0 6px; }
+    .card-desc { font-size: 13.5px; color: var(--body); }
+    .card-footer {
+      border-top: 1px solid #FCE7F3;
+      padding-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .price { font-size: 21px; font-weight: 700; color: var(--accent); }
+    .price small { font-size: 12px; font-weight: 500; color: var(--muted); }
+
+    /* Info Sections */
+    .section-box { padding: 36px 0; }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 18px; }
+    .step-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .step-num { font-weight: 700; color: var(--accent); font-size: 13px; }
+    .step-card h3 { font-size: 19px; margin: 6px 0; }
+    .step-card p { font-size: 13px; color: var(--body); }
+
+    /* Contact Card & Footer */
+    .contact-card {
+      background: linear-gradient(135deg, #2E1047, #7C3AED, #DB2777);
+      color: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .contact-card h2 { font-size: 30px; margin-bottom: 8px; }
+    .contact-card p { font-size: 14px; color: #FCE7F3; max-width: 520px; }
+    footer {
+      margin-top: 40px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+
+    /* Floating WhatsApp */
+    .floating-wa {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 12px 26px rgba(22, 163, 74, 0.35);
+    }
+
+    /* Order Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(46, 16, 71, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(46, 16, 71, 0.25);
+    }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .modal-close {
+      border: 1px solid var(--border);
+      background: #FFF8FB;
+      border-radius: 10px;
+      padding: 6px 11px;
+      font-weight: 700;
+    }
+    .form-grid { display: grid; gap: 11px; margin-top: 14px; }
+    .form-grid label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; }
+    .form-grid input, .form-grid textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+    .addons-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .addon-chip {
+      border: 1px solid var(--border);
+      background: #FFF9FC;
+      border-radius: 10px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .addon-chip.active { background: #F3E8FF; border-color: var(--purple); color: var(--purple); }
+    @media (max-width: 760px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    WISHOLOGY · Custom Digital Wishes Crafted With Love · Personalized Link &amp; QR Keepsake Included
+  </div>
+
+  <!-- Customer-Only Header -->
+  <header>
+    <div class="container nav-bar">
+      <a href="#top" class="brand">
+        <span class="brand-icon">&#10084;</span>
+        <span>WISHOLOGY</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#catalog">Catalog</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#catalog" class="btn-primary">Explore Wishes &rarr;</a>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- Top Brand & Shareable Link Strip -->
+    <section class="top-strip">
+      <div class="top-head">
+        <div>
+          <p class="top-kicker">WISHOLOGY · Handcrafted Digital Greetings &amp; Keepsakes</p>
+          <h1 class="top-title">Make Every Moment <span>Unforgettable</span></h1>
+        </div>
+        <div class="share-actions">
+          <button type="button" class="btn-outline" onclick="openMessageModal()">Message on WISHOLOGY</button>
+        </div>
+      </div>
+
+      <div class="share-bar">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <strong style="font-size:12px;">Store Link:</strong>
+          <a id="liveStoreAnchor" href="#" class="share-url"></a>
+        </div>
+        <div class="share-actions">
+          <button type="button" id="copyBtn" class="btn-outline" onclick="copyStoreLink()">Copy Store Link</button>
+          <a id="shareWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Share on WhatsApp</a>
+          <button type="button" class="btn-outline" onclick="nativeShareStore()">Share Anywhere</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Catalog Right on Top (2 Products Per Row) -->
+    <section id="catalog" class="catalog-section">
+      <div class="catalog-header">
+        <div>
+          <h2>Order Your Personalized Wish</h2>
+          <p>Select any wish below to customize your words, add-ons, and send your order.</p>
+        </div>
+        <div class="filters">
+          <input type="text" id="searchInput" placeholder="Search wishes..." oninput="renderCatalog()" />
+          <select id="categoryFilter" onchange="renderCatalog()">
+            <option value="All">All Categories</option>
+            <option value="Love & Romance">Love &amp; Romance</option>
+            <option value="Birthdays & Milestones">Birthdays &amp; Milestones</option>
+            <option value="Family & New Beginnings">Family &amp; New Beginnings</option>
+            <option value="Weddings & Special Days">Weddings &amp; Special Days</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="guarantee-bar">
+        <span><strong>WhatsApp Delivery Guarantee:</strong> After your order completion, your personalized blog or digital card is shared directly with you on WhatsApp.</span>
+        <button type="button" class="btn-outline" onclick="openMessageModal()">Ask a Question</button>
+      </div>
+
+      <div id="catalogGrid" class="catalog-grid"></div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section-box">
+      <h2 style="font-size:28px;">How WISHOLOGY Works</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01.</span>
+          <h3>Choose Your Wish</h3>
+          <p>Browse our catalog for Birthday, Anniversary, Baby Born, Wedding, Valentine, or Special Day wishes.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02.</span>
+          <h3>Share Words &amp; Details</h3>
+          <p>Enter your recipient's name, special story, and optional add-ons in one quick form.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03.</span>
+          <h3>Receive Card on WhatsApp</h3>
+          <p>After your order completion, your personalized digital card or blog link &amp; QR code is sent straight to your WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-box">
+      <div class="contact-card">
+        <div>
+          <h2>Have a Custom Wish Idea? Let's Talk.</h2>
+          <p>Message WISHOLOGY anytime on WhatsApp (+923226818159) or email babarazam1214@gmail.com for bespoke greeting pages and urgent wishes.</p>
+        </div>
+        <div class="share-actions">
+          <a href="https://wa.me/923226818159?text=Hello%20WISHOLOGY!%20I%20would%20like%20to%20order%20a%20custom%20digital%20wish." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="padding:12px 18px;font-size:14px;">Message on WhatsApp</a>
+          <button type="button" class="btn-outline" style="padding:12px 18px;font-size:14px;" onclick="openMessageModal()">Send Direct Inquiry</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; <span id="yearNow"></span> WISHOLOGY · Personalized Digital Greetings &amp; QR Keepsakes</span>
+      <span>WhatsApp: +923226818159 · babarazam1214@gmail.com</span>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/923226818159?text=Hello%20WISHOLOGY!" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+
+  <!-- Order Modal -->
+  <div id="orderModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <span id="modalCategory" style="font-size:11px;font-weight:700;color:var(--accent);"></span>
+          <h3 id="modalTitle" style="font-size:24px;"></h3>
+        </div>
+        <button type="button" class="modal-close" onclick="closeOrderModal()">&times;</button>
+      </div>
+      <p id="modalDesc" style="font-size:13.5px;color:var(--body);margin-bottom:10px;"></p>
+      <p style="font-size:18px;font-weight:700;color:var(--accent);">Total: $<span id="modalPrice">0</span> <small style="font-size:12px;color:var(--muted);font-weight:500;">· <span id="modalDelivery"></span></small></p>
+
+      <div id="modalAddonsWrap" style="margin-top:12px;">
+        <p style="font-size:12px;font-weight:700;">Optional Add-ons:</p>
+        <div id="modalAddons" class="addons-list"></div>
+      </div>
+
+      <form id="orderForm" class="form-grid" onsubmit="submitWhatsappOrder(event)">
+        <div>
+          <label for="custName">Your Name *</label>
+          <input id="custName" type="text" required placeholder="e.g., Ayesha Khan" />
+        </div>
+        <div>
+          <label for="custPhone">Your WhatsApp Number *</label>
+          <input id="custPhone" type="text" required placeholder="e.g., +923001234567" />
+        </div>
+        <div>
+          <label for="recipName">Recipient Name *</label>
+          <input id="recipName" type="text" required placeholder="Who is this wish for?" />
+        </div>
+        <div>
+          <label for="occasionDate">Occasion Date</label>
+          <input id="occasionDate" type="date" />
+        </div>
+        <div>
+          <label for="wishNotes">Your Heartfelt Message &amp; Instructions *</label>
+          <textarea id="wishNotes" rows="3" required placeholder="Share your special words, colors, or questions..."></textarea>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;">
+          <button type="submit" class="btn-whatsapp" style="flex:1;padding:12px;font-size:14px;">Place Order on WhatsApp</button>
+          <button type="button" class="btn-primary" style="flex:1;padding:12px;font-size:14px;" onclick="submitEmailOrder()">Order via Email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Direct Message Modal -->
+  <div id="msgModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 style="font-size:22px;">Message WISHOLOGY</h3>
+        <button type="button" class="modal-close" onclick="closeMessageModal()">&times;</button>
+      </div>
+      <form class="form-grid" onsubmit="sendCustomerMessage(event)">
+        <div>
+          <label for="msgName">Your Name *</label>
+          <input id="msgName" type="text" required placeholder="Your name" />
+        </div>
+        <div>
+          <label for="msgSubject">Topic</label>
+          <input id="msgSubject" type="text" value="Custom Wish Question" />
+        </div>
+        <div>
+          <label for="msgText">Your Message *</label>
+          <textarea id="msgText" rows="3" required placeholder="Write your question or custom idea..."></textarea>
+        </div>
+        <button type="submit" class="btn-whatsapp" style="padding:12px;font-size:14px;">Send to WISHOLOGY WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = "923226818159";
+    const CONTACT_EMAIL = "babarazam1214@gmail.com";
+
+    const CATALOG = [
+      {
+        id: "anniversary-wish",
+        title: "Anniversary Wish",
+        category: "Love & Romance",
+        price: 29,
+        delivery: "24 Hours",
+        gradient: "linear-gradient(135deg, #FFE4EE, #F3E8FF)",
+        shortDesc: "Romantic digital keepsake celebrating your milestone years, memories, and vows.",
+        addons: [
+          { name: "Express 6-Hour Delivery", price: 10 },
+          { name: "Romantic Music Pairing", price: 6 },
+          { name: "Printable Keepsake QR Poster", price: 8 }
+        ]
+      },
+      {
+        id: "birthday-wish",
+        title: "Birthday Wish",
+        category: "Birthdays & Milestones",
+        price: 24,
+        delivery: "12-24 Hours",
+        gradient: "linear-gradient(135deg, #F3E8FF, #FCE7F3)",
+        shortDesc: "Cheerful interactive birthday wish page with confetti glow, photos, and QR surprise.",
+        addons: [
+          { name: "Express 6-Hour Delivery", price: 10 },
+          { name: "Multi-Photo Memory Carousel", price: 7 }
+        ]
+      },
+      {
+        id: "special-day-wish",
+        title: "Special Day Wish",
+        category: "Weddings & Special Days",
+        price: 22,
+        delivery: "24 Hours",
+        gradient: "linear-gradient(135deg, #EDE9FE, #FFF0F7)",
+        shortDesc: "Custom digital celebration for graduations, promotions, thank-yous, or proud wins.",
+        addons: [
+          { name: "Express 6-Hour Delivery", price: 10 },
+          { name: "Printable Keepsake QR Card", price: 8 }
+        ]
+      },
+      {
+        id: "couples-day-wish",
+        title: "Couples Day Wish",
+        category: "Love & Romance",
+        price: 25,
+        delivery: "24 Hours",
+        gradient: "linear-gradient(135deg, #FFEBEF, #F5E8FF)",
+        shortDesc: "Sweet romantic digital note crafted for partners, date nights, and couple milestones.",
+        addons: [
+          { name: "10 Reasons I Love You Section", price: 9 },
+          { name: "Express 6-Hour Delivery", price: 10 }
+        ]
+      },
+      {
+        id: "baby-born-wish",
+        title: "Baby Born Wish",
+        category: "Family & New Beginnings",
+        price: 26,
+        delivery: "24 Hours",
+        gradient: "linear-gradient(135deg, #FFF1F6, #FFEDD5)",
+        shortDesc: "Tender welcome announcement & blessing card for newborn arrivals and proud parents.",
+        addons: [
+          { name: "Birth Stats & Weight Card", price: 5 },
+          { name: "Express 6-Hour Delivery", price: 10 }
+        ]
+      },
+      {
+        id: "welcome-wish",
+        title: "Welcome Wish",
+        category: "Family & New Beginnings",
+        price: 20,
+        delivery: "12-24 Hours",
+        gradient: "linear-gradient(135deg, #F5F3FF, #FFF7FA)",
+        shortDesc: "Warm digital greeting for welcoming guests, homecomers, brides, or new beginnings.",
+        addons: [
+          { name: "Printable Welcome QR Standee", price: 8 }
+        ]
+      },
+      {
+        id: "valentine-wish",
+        title: "Valentine Wish",
+        category: "Love & Romance",
+        price: 29,
+        delivery: "12-24 Hours",
+        gradient: "linear-gradient(135deg, #FFE4EE, #FFF1F2)",
+        shortDesc: "Dreamy rose-pink interactive love letter with heartfelt reveal & scannable QR token.",
+        addons: [
+          { name: "Secret Passcode Unlock Screen", price: 7 },
+          { name: "Express 6-Hour Delivery", price: 10 }
+        ]
+      },
+      {
+        id: "wedding-wish",
+        title: "Wedding Wish",
+        category: "Weddings & Special Days",
+        price: 34,
+        delivery: "24 Hours",
+        gradient: "linear-gradient(135deg, #FEF3C7, #FCE7F3)",
+        shortDesc: "Timeless digital wedding blessing, invitation keepsake, or newlywed congratulation card.",
+        addons: [
+          { name: "Couple Story Timeline", price: 12 },
+          { name: "Express 6-Hour Delivery", price: 10 }
+        ]
+      }
+    ];
+
+    let activeService = null;
+    let selectedAddons = [];
+
+    const currentUrl = window.location.href.split('#')[0];
+    document.getElementById("yearNow").textContent = new Date().getFullYear();
+    const anchor = document.getElementById("liveStoreAnchor");
+    anchor.href = currentUrl;
+    anchor.textContent = currentUrl;
+    document.getElementById("shareWaBtn").href =
+      "https://wa.me/?text=" + encodeURIComponent("Visit WISHOLOGY & order personalized digital wishes here: " + currentUrl);
+
+    function copyStoreLink() {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(currentUrl).then(() => {
+          const btn = document.getElementById("copyBtn");
+          btn.textContent = "Link Copied!";
+          setTimeout(() => { btn.textContent = "Copy Store Link"; }, 2000);
+        });
+      }
+    }
+
+    function nativeShareStore() {
+      if (navigator.share) {
+        navigator.share({ title: "WISHOLOGY Store", text: "Personalized digital wishes & QR keepsakes", url: currentUrl }).catch(() => {});
+      } else {
+        copyStoreLink();
+      }
+    }
+
+    function renderCatalog() {
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      const cat = document.getElementById("categoryFilter").value;
+      const grid = document.getElementById("catalogGrid");
+
+      const items = CATALOG.filter(item => {
+        if (cat !== "All" && item.category !== cat) return false;
+        if (q && !(item.title.toLowerCase().includes(q) || item.shortDesc.toLowerCase().includes(q) || item.category.toLowerCase().includes(q))) return false;
+        return true;
+      });
+
+      if (items.length === 0) {
+        grid.innerHTML = '<div class="card" style="grid-column:1/-1;text-align:center;padding:36px;"><h3>No matching wishes found</h3></div>';
+        return;
+      }
+
+      grid.innerHTML = items.map(item => `
+        <article class="card">
+          <div class="card-top">
+            <div class="card-visual" style="background:${item.gradient};">
+              <span class="card-badge">${item.category}</span>
+              <div style="font-size:13px;font-weight:700;">QR Keepsake Included</div>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div class="card-meta">${item.category} &middot; ${item.delivery}</div>
+              <h3>${item.title}</h3>
+              <p class="card-desc">${item.shortDesc}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="price">$${item.price} <small>${item.addons.length ? '&middot; Add-ons available' : ''}</small></div>
+            <button type="button" class="btn-primary" onclick="openOrderModal('${item.id}')">Order Now &rarr;</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function openOrderModal(id) {
+      activeService = CATALOG.find(x => x.id === id);
+      selectedAddons = [];
+      if (!activeService) return;
+      document.getElementById("modalCategory").textContent = activeService.category;
+      document.getElementById("modalTitle").textContent = activeService.title;
+      document.getElementById("modalDesc").textContent = activeService.shortDesc;
+      document.getElementById("modalDelivery").textContent = activeService.delivery;
+      renderModalPriceAndAddons();
+      document.getElementById("orderModalBackdrop").classList.add("open");
+    }
+
+    function closeOrderModal() {
+      document.getElementById("orderModalBackdrop").classList.remove("open");
+    }
+
+    function toggleAddon(name) {
+      if (selectedAddons.includes(name)) {
+        selectedAddons = selectedAddons.filter(a => a !== name);
+      } else {
+        selectedAddons.push(name);
+      }
+      renderModalPriceAndAddons();
+    }
+
+    function renderModalPriceAndAddons() {
+      const addonObjs = activeService.addons.filter(a => selectedAddons.includes(a.name));
+      const total = activeService.price + addonObjs.reduce((s, a) => s + a.price, 0);
+      document.getElementById("modalPrice").textContent = total;
+      document.getElementById("modalAddons").innerHTML = activeService.addons.map(a => {
+        const active = selectedAddons.includes(a.name);
+        return `<button type="button" class="addon-chip ${active ? 'active' : ''}" onclick="toggleAddon('${a.name.replace(/'/g, "\\'")}')">${active ? '✓ ' : '+ '}${a.name} (+$${a.price})</button>`;
+      }).join("");
+    }
+
+    function buildOrderSummary() {
+      const total = document.getElementById("modalPrice").textContent;
+      const addonsText = selectedAddons.length ? selectedAddons.join(", ") : "None";
+      return [
+        "New WISHOLOGY Order",
+        "Service: " + activeService.title + " ($" + total + ")",
+        "Add-ons: " + addonsText,
+        "Customer: " + document.getElementById("custName").value.trim(),
+        "WhatsApp: " + document.getElementById("custPhone").value.trim(),
+        "Recipient: " + document.getElementById("recipName").value.trim(),
+        "Occasion Date: " + (document.getElementById("occasionDate").value || "Flexible"),
+        "Words & Instructions: " + document.getElementById("wishNotes").value.trim()
+      ].join("\n");
+    }
+
+    function submitWhatsappOrder(e) {
+      e.preventDefault();
+      window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildOrderSummary());
+    }
+
+    function submitEmailOrder() {
+      if (!document.getElementById("orderForm").reportValidity()) return;
+      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("WISHOLOGY Order: " + activeService.title) + "&body=" + encodeURIComponent(buildOrderSummary());
+    }
+
+    function openMessageModal() {
+      document.getElementById("msgModalBackdrop").classList.add("open");
+    }
+
+    function closeMessageModal() {
+      document.getElementById("msgModalBackdrop").classList.remove("open");
+    }
+
+    function sendCustomerMessage(e) {
+      e.preventDefault();
+      const text = [
+        "Message for WISHOLOGY",
+        "Name: " + document.getElementById("msgName").value.trim(),
+        "Topic: " + document.getElementById("msgSubject").value.trim(),
+        "Message: " + document.getElementById("msgText").value.trim()
+      ].join("\n");
+      window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+    }
+
+    renderCatalog();
+  </script>
+</body>
+</html>
